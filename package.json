@@ -1,0 +1,26 @@
+{
+  "name": "aws-baseline",
+  "version": "1.0.0",
+  "description": "Opinionated Terraform modules for a secure, observable AWS account: network, ECS Fargate, RDS, static site, alarms and budget.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "author": "Arvion Technologies <hello@arviontech.net> (https://arviontech.net)",
+  "homepage": "https://arvion-technology.github.io/labs/demos/aws-baseline/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arvion-technology/aws-baseline.git"
+  },
+  "scripts": {
+    "test": "node --test test/",
+    "demo": "node scripts/serve.mjs . 4173",
+    "shot": "node scripts/shot.mjs 1440 900 docs/screenshot.png #network",
+    "shot:2": "node scripts/shot.mjs 1440 900 docs/screenshot-2.png #example-prod",
+    "verify": "node --test test/ && node scripts/validate.mjs && node scripts/serve-check.mjs",
+    "validate": "node scripts/validate.mjs",
+    "build:data": "node scripts/build-data.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
