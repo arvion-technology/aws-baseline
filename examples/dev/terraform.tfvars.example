@@ -1,0 +1,12 @@
+region          = "ap-south-1"
+project         = "arvion-labs"
+environment     = "dev"
+owner           = "platform"
+container_image = "public.ecr.aws/nginx/nginx:1.27-alpine"
+bucket_suffix   = "dev"
+monthly_budget  = 100
+
+# Never commit a real password. Export TF_VAR_db_password in your shell or CI.
+db_password = "REPLACE_WITH_SECRET"
+
+alert_emails = []

@@ -1,0 +1,21 @@
+region          = "ap-south-1"
+project         = "arvion-labs"
+environment     = "prod"
+owner           = "platform"
+cost_center     = "engineering"
+bucket_suffix   = "prod"
+
+# Pin by digest in real deployments: public.ecr.aws/...@sha256:...
+container_image = "REPLACE_WITH_IMAGE_DIGEST"
+db_instance_class = "db.m6g.large"
+monthly_budget    = 1500
+
+# Never commit a real password. Export TF_VAR_db_password in CI.
+db_password = "REPLACE_WITH_SECRET"
+
+site_domain            = ""
+site_certificate_arn   = ""
+alb_arn_suffix         = ""
+target_group_arn_suffix = ""
+
+alert_emails = ["platform@example.com"]
