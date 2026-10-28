@@ -39,18 +39,18 @@ module "network" {
 module "rds" {
   source = "../../modules/rds"
 
-  name                      = "${local.name}-db"
-  instance_class            = "db.t3.micro"
-  allocated_storage         = 20
-  vpc_id                    = module.network.vpc_id
-  subnet_ids                = module.network.private_subnet_ids
-  ingress_security_group_ids = [module.service.service_security_group_id]
-  password                  = var.db_password
-  multi_az                  = false
-  deletion_protection       = false
-  backup_retention_period   = 1
+  name                         = "${local.name}-db"
+  instance_class               = "db.t3.micro"
+  allocated_storage            = 20
+  vpc_id                       = module.network.vpc_id
+  subnet_ids                   = module.network.private_subnet_ids
+  ingress_security_group_ids   = [module.service.service_security_group_id]
+  password                     = var.db_password
+  multi_az                     = false
+  deletion_protection          = false
+  backup_retention_period      = 1
   performance_insights_enabled = false
-  tags                      = local.tags
+  tags                         = local.tags
 }
 
 module "service" {
@@ -79,13 +79,13 @@ module "service" {
 module "alarms" {
   source = "../../modules/alarms"
 
-  name_prefix          = local.name
-  ecs_cluster_name     = module.service.cluster_name
-  ecs_service_name     = module.service.service_name
-  rds_instance_id      = module.rds.resource_id
+  name_prefix            = local.name
+  ecs_cluster_name       = module.service.cluster_name
+  ecs_service_name       = module.service.service_name
+  rds_instance_id        = module.rds.resource_id
   rds_free_storage_bytes = 2147483648
-  alert_emails         = var.alert_emails
-  tags                 = local.tags
+  alert_emails           = var.alert_emails
+  tags                   = local.tags
 }
 
 module "site" {
@@ -99,9 +99,9 @@ module "site" {
 module "budget" {
   source = "../../modules/budget"
 
-  name                 = "${local.name}-monthly"
-  limit_amount         = var.monthly_budget
-  notification_emails  = var.alert_emails
-  thresholds           = [80, 100]
-  tags                 = local.tags
+  name                = "${local.name}-monthly"
+  limit_amount        = var.monthly_budget
+  notification_emails = var.alert_emails
+  thresholds          = [80, 100]
+  tags                = local.tags
 }

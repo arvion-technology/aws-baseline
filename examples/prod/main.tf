@@ -90,18 +90,18 @@ module "service" {
 module "alarms" {
   source = "../../modules/alarms"
 
-  name_prefix              = local.name
-  ecs_cluster_name         = module.service.cluster_name
-  ecs_service_name         = module.service.service_name
-  rds_instance_id          = module.rds.resource_id
-  alb_arn_suffix           = var.alb_arn_suffix
-  target_group_arn_suffix  = var.target_group_arn_suffix
-  rds_free_storage_bytes   = 21474836480
-  ecs_cpu_threshold        = 70
-  ecs_memory_threshold     = 75
-  target_latency_ms        = 1500
-  alert_emails             = var.alert_emails
-  tags                     = local.tags
+  name_prefix             = local.name
+  ecs_cluster_name        = module.service.cluster_name
+  ecs_service_name        = module.service.service_name
+  rds_instance_id         = module.rds.resource_id
+  alb_arn_suffix          = var.alb_arn_suffix
+  target_group_arn_suffix = var.target_group_arn_suffix
+  rds_free_storage_bytes  = 21474836480
+  ecs_cpu_threshold       = 70
+  ecs_memory_threshold    = 75
+  target_latency_ms       = 1500
+  alert_emails            = var.alert_emails
+  tags                    = local.tags
 }
 
 module "site" {

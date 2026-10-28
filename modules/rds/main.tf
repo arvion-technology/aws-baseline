@@ -85,7 +85,7 @@ resource "aws_db_instance" "this" {
   final_snapshot_identifier = local.is_production ? "${var.name}-final" : null
 
   auto_minor_version_upgrade = true
-  apply_immediately         = false
+  apply_immediately          = false
 
   tags = merge(var.tags, { Name = var.name })
 }
