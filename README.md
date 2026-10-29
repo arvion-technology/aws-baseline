@@ -2,7 +2,7 @@
 <img src="docs/demo.gif" alt="AWS Baseline explorer showing the network module inputs, outputs and resource types" width="100%" />
 </div>
 
-<sub>Recorded from the live demo — <a href="docs/demo.mp4">MP4</a> · <a href="docs/screenshot.png">static frame</a></sub>
+<sub>Recorded from the live demo, <a href="docs/demo.mp4">MP4</a> · <a href="docs/screenshot.png">static frame</a></sub>
 
 # AWS Baseline
 
@@ -24,21 +24,21 @@ taken on its own.
 
 ## What it does
 
-- **`network`** — VPC, public/private subnets across 2-3 AZs, one NAT gateway per
+- **`network`**: VPC, public/private subnets across 2-3 AZs, one NAT gateway per
   AZ, route tables and associations.
-- **`ecs-service`** — Fargate service and task definition, log group, separate
+- **`ecs-service`**: Fargate service and task definition, log group, separate
   task/execution IAM roles, Secrets Manager access limited to the ARNs passed in,
   and a task security group with egress only.
-- **`rds`** — PostgreSQL in private subnets, encrypted storage, forced SSL,
+- **`rds`**: PostgreSQL in private subnets, encrypted storage, forced SSL,
   Performance Insights, backups, optional Multi-AZ and deletion protection.
   `publicly_accessible` is hard-coded to false.
-- **`static-site`** — private S3 bucket with all four public access blocks, a
+- **`static-site`**: private S3 bucket with all four public access blocks, a
   CloudFront distribution using Origin Access Control, and a bucket policy that
   only allows this distribution to read.
-- **`alarms`** — ECS CPU/memory alarms always; RDS and load-balancer alarms only
+- **`alarms`**: ECS CPU/memory alarms always; RDS and load-balancer alarms only
   when their identifiers are supplied.
-- **`budget`** — monthly AWS Budget with forecasted-spend notifications.
-- **Validation** — `node scripts/validate.mjs` runs structural checks always and
+- **`budget`**: monthly AWS Budget with forecasted-spend notifications.
+- **Validation**: `node scripts/validate.mjs` runs structural checks always and
   `terraform fmt -check` / `terraform validate` when a Terraform binary exists.
 
 ## Screenshots
@@ -101,8 +101,8 @@ The validation script is the local gate:
 
 ```bash
 node scripts/validate.mjs
-# Terraform baseline — 6 modules, 2 examples
-# terraform: not installed — fmt/validate skipped; structural checks below still apply
+# Terraform baseline: 6 modules, 2 examples
+# terraform: not installed: fmt/validate skipped; structural checks below still apply
 #
 # checked 48 files: 6 modules, 69 variables, 28 outputs, 42 resources, 2 examples
 # structural checks passed

@@ -89,14 +89,14 @@ const allWarnings = [...structural.warnings, ...terraform.warnings];
 if (args.has("--json")) {
   console.log(JSON.stringify({ ok: allErrors.length === 0, structural, terraform, errors: allErrors, warnings: allWarnings }, null, 2));
 } else {
-  console.log(`Terraform baseline — ${structural.stats.modules} modules, ${structural.stats.examples} examples`);
+  console.log(`Terraform baseline, ${structural.stats.modules} modules, ${structural.stats.examples} examples`);
   if (terraform.available) {
     console.log(`terraform fmt: ${terraform.fmt}`);
     for (const [environment, result] of Object.entries(terraform.examples)) {
       console.log(`terraform validate (${environment}): ${result}`);
     }
   } else {
-    console.log("terraform: not installed — fmt/validate skipped; structural checks below still apply");
+    console.log("terraform: not installed, fmt/validate skipped; structural checks below still apply");
   }
   console.log("");
   process.stdout.write(formatValidation(structural));

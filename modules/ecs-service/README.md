@@ -6,7 +6,7 @@ roles and a security group that only allows egress.
 The two roles are separate on purpose. The execution role pulls the image,
 writes logs and reads the Secrets Manager ARNs listed in `secrets` (and only
 those). The task role is what the application itself can do, and starts with
-permission to write its own logs — no wildcard, no `*` resource. Attach the
+permission to write its own logs, no wildcard, no `*` resource. Attach the
 permissions the service actually needs to the task role in the calling
 configuration.
 
